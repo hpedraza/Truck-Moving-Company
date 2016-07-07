@@ -1,0 +1,60 @@
+﻿@model TruckMovingCompany.ViewModels.LatestViewModel
+
+@{
+    ViewBag.Title = "DisplayLatestInformation";
+}
+
+
+
+@* Most of the styling is done in lastThreeTrucks.css, but common styling is derived from site.css *@
+
+@if (Model.LastThreeTrucks.Count == 0)
+{
+    <div header-for-dli><div class="container" id="headerView-for-dli"><h3>Sorry there are no trucks that have gone out to work.</h3></div></div>
+}
+else
+{
+    @* Display last three trucks*@
+    @* back ground layer *@
+    <div id="header-for-dli">
+        @* div witht the actual material *@
+        <div class="container" id="headerView-for-dli">
+            <p class="headers" id="dli-header-p">Last Three Trucks to Go Out</p>
+            <hr/>
+            <table class="table table-primary table-striped table-responsive">
+                <tbody>
+                    @foreach (var truck in Model.LastThreeTrucks)
+                   {
+                        <tr>
+                            <td>@truck.TruckName last went out @truck.LastMoveDateTime</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    @* Display all the movers part of the trucks *@
+    <div class="bottom-layer-for-dli">
+        <div class="container">
+            <table class="table table-primary table-striped table-condensed table-responsive" style="padding-top: 15px;">
+                <thead>
+                    <tr>
+                        <th>
+                            <p class="headers" id="dli-header-p">All Movers Part of the Last Three Moves</p>
+                       </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var mover in Model.Movers)
+                    {
+                        <tr>
+                            <td>@mover.FirstName @mover.LastName part of @mover.CrewCount Crews </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+

@@ -1,0 +1,15 @@
+﻿#header-for-dli{
+    background-color: rgba(5, 95, 173, 0.25);
+    padding: 25px 15px 15px 15px;
+}
+
+#headerView-for-dli{
+    padding: 15px 15px 0px 15px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+#dli-header-p{
+    color: rgba(5, 95, 173, 0.75);
+   
+}
