@@ -64,9 +64,8 @@ C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\T
 C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\obj\Debug\TruckMovingCompany.csprojResolveAssemblyReference.cache
-C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\obj\Debug\TruckMovingCompany.Migrations.Init.resources
-C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\obj\Debug\TruckMovingCompany.Migrations.UpdatedCrewModelRemovedTruckId.resources
-C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\obj\Debug\TruckMovingCompany.csproj.GenerateResource.Cache
-C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\obj\Debug\TruckMovingCompany.dll
-C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\obj\Debug\TruckMovingCompany.pdb
+C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\obj\Release\TruckMovingCompany.Migrations.Init.resources
+C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\obj\Release\TruckMovingCompany.Migrations.UpdatedCrewModelRemovedTruckId.resources
+C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\obj\Release\TruckMovingCompany.csproj.GenerateResource.Cache
+C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\obj\Release\TruckMovingCompany.dll
+C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\obj\Release\TruckMovingCompany.pdb
