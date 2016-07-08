@@ -41,14 +41,19 @@ textarea {
 }
 
 #moverForm{
-    margin: 0px auto;
-    width: 50%;
-    padding-top: 15px;
-    background-color: rgba(0, 0, 0, 0.08);
-    padding-left: 15px;
-    padding-bottom: 15px;
-    border: 1px solid #428bca;
+    margin: 0 auto;
+    padding: 15px 15px 15px 15px;
+    display:inline-block;
+
 }
+#form-container{
+    background-color: rgba(0, 0, 0, 0.08);
+    border: 1px solid #428bca;
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+}
+
 
 #headerView{
     padding: 15px 15px 0px 15px;
