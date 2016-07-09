@@ -8,107 +8,108 @@
 
 @* Background layer *@
 
-<div id="header">
-    @* List all Movers *@
+    <div class="row">
+        <div id="header" class="col-md-8">
+            @* List all Movers *@
 
-    <div id="headerView" class="container" style="padding-top: 15px;">
-        @if (Model.Count() == 0)
-        {
-            <div>
-                <p>There are no movers in the database</p>
-            </div>
-        }
+            <div id="headerView" style="padding-top: 15px;">
+                @if (Model.Count() == 0)
+            {
+                    <div>
+                        <p>There are no movers in the database</p>
+                    </div>
+                }
 
-        else
-        {
-            <div class="panel-group">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <p class="headers">Listed are all Movers in the Company</p>
+                else
+                {
+                    <div class="panel-group">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <p class="headers">Listed are all Movers in the Company</p>
+                            </div>
+
+                            <div class="panel-body">
+                                <table class="table table-striped table-hover table-responsive table-condensed">
+                                    <thead>
+                                        <tr>
+                                            <td class="table-header-td">First Name</td>
+                                            <td class="table-header-td">Last Name</td>
+                                            <td class="table-header-td">Crews</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tableBody">
+                                        @foreach (var i in Model)
+                                        {
+                                            <tr>
+                                                <td>@i.FirstName</td>
+                                                <td>@i.LastName</td>
+                                                <td>
+                                                    <select class="form-control">
+                                                        @foreach (var j in i.Crews)
+                                                        {
+                                                            <option>
+                                                                @j.CrewName
+                                                            </option>
+                                                        }
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    @using (Html.BeginForm("EditMover", "Home"))
+                                                    {
+                                                        @Html.Hidden(i.FirstName)
+                                                        @Html.Hidden(i.LastName)
+
+                                                        <button class="btn btn-xs btn-info" type="submit" style="width: 70px;">Edit</button>
+                                                        <button class="btn btn-xs btn-danger deleteMover" type="button">Delete</button>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="panel-body">
-                        <table class="table table-striped table-hover table-responsive">
-                            <thead>
-                                <tr>
-                                    <td class="table-header-td">First Name</td>
-                                    <td class="table-header-td">Last Name</td>
-                                    <td class="table-header-td">Crews</td>
-                                </tr>
-                            </thead>
-                            <tbody id="tableBody">
-                                @foreach (var i in Model)
-                                {
-                                    <tr>
-                                        <td>@i.FirstName</td>
-                                        <td>@i.LastName</td>
-                                        <td>
-                                            <select class="form-control">
-                                                @foreach (var j in i.Crews)
-                                                {
-                                                    <option>
-                                                        @j.CrewName
-                                                    </option>
-                                                }
-                                            </select>
-                                        </td>
-                                        <td>
-                                            @using (Html.BeginForm("EditMover", "Home"))
-                                            {
-                                                @Html.Hidden(i.FirstName)
-                                                @Html.Hidden(i.LastName)
-
-                                                <button class="btn btn-xs btn-info" type="submit" style="width: 70px;">Edit</button>
-                                                <button class="btn btn-xs btn-danger deleteMover" type="button">Delete</button>
-                                            }
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                }
             </div>
-
-        }
-    </div>
-</div> @* End of header (displaying all movers) *@
+        </div> @* End of header (displaying all movers) *@
 
 
 
-@* Form to create a Mover *@
-<div id="formLayer">
-    <div class="container" >
-        <div>
-            <p class="headers" id="add-a-mover">Add a Mover</p>
-        </div>
-        <div id="form-container">
-            <form role="form" id="moverForm" action="PostMover" style="margin: 0 auto">
-                <div class="form-group">
-                    <label>First Name: </label>
-                    <input type="text" id="firstName" name="firstName" class="form-control" required />
+        @* Form to create a Mover *@
+        <div id="formLayer" class="col-md-4">
+            <div class="container " id="form-container">
+                <div id="add-a-mover-container">
+                    <p class="headers" id="add-a-mover">Add a Mover</p>
                 </div>
+                <form role="form" id="moverForm" action="PostMover">
+                    <div class="form-group">
+                        <label class="form-label-text">First Name </label>
+                        <input type="text" id="firstName" name="firstName" class="form-control" required />
+                    </div>
 
-                <div class="form-group">
-                    <label>Last Name: </label>
-                    <input type="text" id="lastName" name="lastName" class="form-control" required />
-                </div>
+                    <div class="form-group">
+                        <label class="form-label-text">Last Name </label>
+                        <input type="text" id="lastName" name="lastName" class="form-control" required />
+                    </div>
 
 
-                <div class="form-group">
-                    <label>Add to Crew: </label>
-                    <select id="crewName" class="form-control">
-                        @foreach (string i in ViewBag.Crews)
-                        {
-                            <option>
-                                @i
-                            </option>
-                        }
-                    </select>
-                </div>
+                    <div class="form-group">
+                        <label class="form-label-text">Add to Crew </label>
+                        <select id="crewName" class="form-control">
+                            @foreach (string i in ViewBag.Crews)
+                            {
+                                <option>
+                                    @i
+                                </option>
+                            }
+                        </select>
+                    </div>
 
-                <button type="button" id="moverPOST" value="Save" class="btn btn-primary">Save</button>
-            </form>
+                    <button type="button" id="moverPOST" value="Save" class="btn btn-primary">Save</button>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+

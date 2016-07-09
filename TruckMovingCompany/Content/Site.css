@@ -23,21 +23,18 @@ textarea {
     max-width: 280px;
 }
 
-.table-header-td{
-    font-size: 1.25em;
-    color: 	#428bca;
-}
+
 
 .headers{
-    font-size: 1.75em;
+    font-size: 1.95em;
     color: white;
     text-align: center;
-    font-weight: bold;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 700;
+    font-family: Poiret One,"Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-  background-color: aliceblue;
+  background-color: rgba(0, 191, 50, .05);
 }
 
 #moverForm{
@@ -47,11 +44,14 @@ textarea {
 
 }
 #form-container{
+
     background-color: rgba(0, 0, 0, 0.08);
     border: 1px solid #428bca;
     text-align: center;
     width: 50%;
-    margin: 0 auto;
+    margin: 0px auto;
+    background-color: #64df85;
+  
 }
 
 
@@ -60,17 +60,175 @@ textarea {
 }
 
 #header{
-    background-color: rgba(5, 95, 173, 0.5);
+    background-color: rgba(0, 191, 50, 0.05);
     padding-bottom: 25px;
 }
 
 #formLayer{
     background-color: rgba(230, 230, 230, 0.39);
     padding-bottom: 25px;
-    border-top: 1px solid black;
+    padding-top: 25px;
 }
 
-#add-a-mover{
-    color: #428bca;
+#add-a-mover-container{
+    
     padding-top: 13px;
+    text-align: center;
+    margin: 0 auto;
+    padding-bottom: 5px;
+    border-bottom: 2px dotted white;
+    
+}
+ #add-a-mover{
+     color: white;
+     font-weight: bold;
+ }
+
+.table thead{ /* .table-header-td */
+    font-size: 1.25em;
+    color: rgba(0, 191, 50, 1);
+}
+
+.table thead{ /* .table-header-td */
+    font-size: 1.25em;
+}
+
+.form-label-text{
+    color: white;
+    font-size: 17px;
+}
+
+.row {
+  border-bottom: 2px solid #248f40;
+  margin-bottom: 20px;
+  padding-bottom: 30px;
+
+}
+
+footer{
+    font-size: 17px;
+    font-weight: 700;
+    font-family: Poiret One,"Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* Bootstrap overrides */
+.navbar-inverse {
+    background-color: #64df85;
+    border-color: #64df85;
+}
+
+.navbar-inverse .navbar-nav > li > a, 
+.navbar-inverse .navbar-brand{
+    color: #fff;
+}
+
+.navbar-inverse .navbar-nav > li > a{
+    font-size: 20px;
+    font-family: Poiret One,"Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+}
+.navbar-brand{
+    font-family: Lobster, "Helvetica Neue", Helvetica, Arial, sans-serif;
+   font-size: 26px;
+}
+.panel-primary > .panel-heading {
+    color: #ffffff;
+    background-color: #64DF85;
+    border-color: #248f40;
+}
+
+.panel {
+    margin-bottom: 20px;
+    border: none;
+}
+.panel-body {
+    border: 1px solid #64df85;
+}
+
+
+.form-control, .btn{
+    border-radius: 2px;
+}
+
+
+.form-control:focus, 
+.panel {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+
+}
+
+select.form-control, table tr{
+    font-size: 17px;
+}
+
+
+.navbar-inverse .navbar-toggle {
+    border-color: #fff;
+}
+
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+    background-color: #248f40;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: Arvo, "Helvetica Neue", Helvetica, Arial, sans-serif;;
+}
+
+/* Media Queries */
+@media (min-width: 992px){
+    #header{
+        padding: 35px 0px 0px 15px;
+    }
+
+
+    /*FormLayer*/
+    #formLayer{
+    background-color: rgba(0, 191, 50, 0.05);
+    padding-bottom: 25px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+
+    }
+
+    #form-container{
+    width: 75%;
+    margin-top: 25px;
+    }
+
+
+    /* Override bootstrap row class to get matching column heights */
+    .row {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      flex-wrap: wrap;
+      background-color: rgba(0, 191, 50, 0.05);
+
+    }
+    .row > [class*='col-'] {
+      display: flex;
+      flex-direction: column;
+
+    }
+
+
+
+
+
 }
