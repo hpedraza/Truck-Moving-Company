@@ -178,6 +178,10 @@
     <Compile Include="Migrations\201607071623276_UpdatedCrewModelRemovedTruckId.Designer.cs">
       <DependentUpon>201607071623276_UpdatedCrewModelRemovedTruckId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607092229453_AddedServerSideValidationToModelsAndMadeViewModelCalledDateTimeVerify.cs" />
+    <Compile Include="Migrations\201607092229453_AddedServerSideValidationToModelsAndMadeViewModelCalledDateTimeVerify.Designer.cs">
+      <DependentUpon>201607092229453_AddedServerSideValidationToModelsAndMadeViewModelCalledDateTimeVerify.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Crews.cs" />
     <Compile Include="Models\Move.cs" />
@@ -186,6 +190,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\AddMoverViewModel.cs" />
+    <Compile Include="ViewModels\DateTimeVerify.cs" />
     <Compile Include="ViewModels\LatestViewModel.cs" />
     <Compile Include="ViewModels\MoversNameViewModel.cs" />
     <Compile Include="ViewModels\MoverViewModel.cs" />
@@ -244,6 +249,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607071623276_UpdatedCrewModelRemovedTruckId.resx">
       <DependentUpon>201607071623276_UpdatedCrewModelRemovedTruckId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607092229453_AddedServerSideValidationToModelsAndMadeViewModelCalledDateTimeVerify.resx">
+      <DependentUpon>201607092229453_AddedServerSideValidationToModelsAndMadeViewModelCalledDateTimeVerify.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
