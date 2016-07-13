@@ -4,7 +4,7 @@ using System.Web.Mvc;
 using TruckMovingCompany.DataModel;
 using TruckMovingCompany.Models;
 using TruckMovingCompany.ViewModels;
-
+using System.Data.Entity;
 namespace TruckMovingCompany.Controllers
 {
 
@@ -23,24 +23,30 @@ namespace TruckMovingCompany.Controllers
         {
             // Get all movers to display to client
             IList<MoverViewModel> movers = new List<MoverViewModel>();
-            var m = db.Movers.Include("Crews").OrderBy(x => x.LastName).ToList();
 
-            foreach (var i in m)
+            var AllMovers = db.Movers.Include(x => x.Crews).OrderBy(x => x.LastName).ToList();
+
+            foreach (var mover in AllMovers)
             {
                 movers.Add(
                     new MoverViewModel
                     {
-                        FirstName = i.FirstName,
-                        LastName = i.LastName,
-                        Crews = i.Crews
+                        FirstName = mover.FirstName,
+                        LastName = mover.LastName,
+                        Crews = mover.Crews
                     }
                 );
             }
 
-            // get all types of crews to create dropdownlist for Add A Mover Form
-            ViewBag.Crews = db.Crews.Select(x => x.CrewName).Distinct();
+            HomeViewModel vm = new HomeViewModel {
+                CrewNames = db.Crews.Select(x => x.CrewName).Distinct().ToList<string>(),
+                Movers = movers
+            };
 
-            return View(movers);
+
+           
+
+            return View(vm);
         }
 
 
@@ -125,7 +131,7 @@ namespace TruckMovingCompany.Controllers
             var count = 0;
             foreach(var truck in lastThreeTrucks)
             {
-                var tempList = db.Movers.Include("Crews").Where(x => x.Crews.Any(y => y.CrewId == truck.CrewId)).Select(x => x).ToList();
+                var tempList = db.Movers.Include(x => x.Crews).Where(x => x.Crews.Any(y => y.CrewId == truck.CrewId)).Select(x => x).ToList();
                 
                 foreach (var mover in tempList)
                 {
@@ -146,6 +152,13 @@ namespace TruckMovingCompany.Controllers
             }
 
             return Movers;
+        }
+
+        private List<Crew> GetCrewList()
+        {
+            var CrewList = db.Crews.ToList();
+
+            return CrewList;
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TruckMovingCompany.ViewModels.MoverViewModel>
+﻿@model TruckMovingCompany.ViewModels.HomeViewModel
 
 @{
         ViewBag.Title = "Home Page";
@@ -13,7 +13,7 @@
             @* List all Movers *@
 
             <div id="headerView" style="padding-top: 15px;">
-                @if (Model.Count() == 0)
+                @if (Model.Movers.Count() == 0)
             {
                     <div>
                         <p>There are no movers in the database</p>
@@ -38,7 +38,7 @@
                                         </tr>
                                     </thead>
                                     <tbody id="tableBody">
-                                        @foreach (var i in Model)
+                                        @foreach (var i in Model.Movers)
                                         {
                                             <tr>
                                                 <td>@i.FirstName</td>
@@ -98,18 +98,76 @@
                     <div class="form-group">
                         <label class="form-label-text">Add to Crew </label>
                         <select id="crewName" class="form-control">
-                            @foreach (string i in ViewBag.Crews)
+                            @foreach (string CrewName in Model.CrewNames)
                             {
                                 <option>
-                                    @i
+                                    @CrewName
                                 </option>
                             }
                         </select>
                     </div>
 
-                    <button type="button" id="moverPOST" value="Save" class="btn btn-primary">Save</button>
+                    <button type="button"  value="Save" class="btn btn-primary js-add-mover">Save</button>
                 </form>
             </div>
         </div>
     </div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $(".js-add-mover").click(function () {
+
+                var moverArray = [$("#firstName").val(),
+                                  $("#lastName").val(),
+                                  $("#crewName").val()];
+                var length = moverArray.length;
+                var error = false;
+                var ArrayIndex = [];
+                for (var i = 0; i < length; i++) {
+                    if (moverArray[i] == "") {
+                        error = true;
+                        ArrayIndex.push(i);
+                    }
+                }
+
+                if(error){
+                    // Do Validation
+                }else{
+                    $.post("/api/AddAMover", {
+                        FirstName: moverArray[0],
+                        LastName: moverArray[1],
+                        CrewName: moverArray[2]
+                    })
+                    .done(function () {
+                        $("#firstName").val('');
+                        $("#lastName").val('');
+
+                        var row = '<tr>';
+                        for (var i = 0; i < moverArray.length; i++) {
+                            if (i < moverArray.length - 1) {
+                                row = row.concat('<td>', moverArray[i], '</td>');
+                            }
+                            else {
+                                row = row.concat('<td><select class = "form-control"><option>', moverArray[i], '</option></select></td>');
+                                row = row.concat('<td>', '<form>', '<input type="hidden" name="firstName" value="', moverArray[0], '"/><input type="hidden" name="lastName" value="', moverArray[1], '"/><button class="btn btn-xs btn-info" type="submit" style="width: 70px;">Edit</button>  <button class="btn btn-xs btn-danger deleteMover" type="button">Delete</button></td></tr></form>');
+                            }
+                        }
+                        var table = $("#tableBody");
+                        table.append(row);
+
+                    })
+                    .fail(function () {
+
+                        alert("Something failed.");
+                    });
+                }
+            });
+        });
+
+
+
+    </script>
+    
+    }
 

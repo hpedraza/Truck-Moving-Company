@@ -32,7 +32,10 @@ C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\T
 C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\bin\Newtonsoft.Json.dll
 C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\bin\Owin.dll
+C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\bin\System.Net.Http.Formatting.dll
 C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\bin\System.Web.Helpers.dll
+C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\bin\System.Web.Http.dll
+C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\bin\System.Web.Http.WebHost.dll
 C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\bin\System.Web.Mvc.dll
 C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\bin\System.Web.Optimization.dll
 C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\bin\System.Web.Razor.dll
@@ -41,6 +44,9 @@ C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\T
 C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\bin\System.Web.WebPages.Razor.dll
 C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\bin\WebGrease.dll
 C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\bin\System.Net.Http.Formatting.xml
+C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\bin\System.Web.Http.xml
+C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\bin\System.Web.Http.WebHost.xml
 C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\bin\System.Web.Helpers.xml
 C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\bin\System.Web.Mvc.xml
 C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\bin\System.Web.Optimization.xml
