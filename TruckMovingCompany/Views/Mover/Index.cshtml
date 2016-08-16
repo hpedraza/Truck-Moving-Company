@@ -1,0 +1,83 @@
+﻿@model TruckMovingCompany.ViewModels.EditMoverViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>@Model.FirstName @Model.LastName Information</h2>
+
+@using (Html.BeginForm("EditMover", "Mover", "Post"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.FirstName)
+        @Html.TextBoxFor(m => m.FirstName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.LastName)
+        @Html.TextBoxFor(m => m.LastName)
+    </div>
+    <div class="form-group">
+        <!-- IList of crews Remove -->
+        <!-- List of crews to Add -->
+        <select id="remove-from-crew">
+            <option disabled selected value> -- select a crew to remove -- </option>
+            @foreach (var MoversCrewName in @Model.MoversCrews)
+            {
+                <option>@MoversCrewName</option>
+            }
+        </select>
+        <input type="button" class="btn btn-danger js-remove-mover-from-crew" value="Remove from Crew"/>
+    </div>
+    <div class="form-group">
+        <!-- IList of crews Remove -->
+        <!-- List of crews to Add -->
+        <select id="add-crew">
+            <option disabled selected value> -- select a crew to add -- </option>
+            @foreach (var AddCrewName in @Model.CrewListToAdd)
+            {
+                <option>@AddCrewName</option>
+            }
+        </select>
+        <input type="button" class="btn btn-success js-add-mover-to-crew" value="Add to Crew"/>
+    </div>
+
+
+}
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $(".js-add-mover-to-crew").on("click", function () {
+                var CrewName = $("#add-crew option:selected").text();
+                alert(CrewName);
+                $.post("api/EditMoverApi/AddMoverToCrew", {CrewName:CrewName,MoverId:@Model.MoverId})
+                .done(function(){
+                    alert("success");
+                })
+                .fail(function(){
+                    alert("something failed");
+                });
+            });
+
+            // remove/delete
+            $(".js-remove-mover-from-crew").on("click", function () {
+                var CrewName = $("#remove-from-crew option:selected").text();
+                alert(CrewName);
+
+                $.ajax({
+                    url: "api/EditMoverApi/RemoveMoverFromCrew",
+                    data: {CrewName:CrewName, MoverId:@Model.MoverId},
+                    type: "DELETE"
+                })
+                .done(function(){
+                    alert('success');
+                })
+                .fail(function(){
+                    alert('failed');
+                });
+
+            });
+
+        });
+    </script>
+
+}

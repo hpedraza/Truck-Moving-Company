@@ -5,6 +5,8 @@ using TruckMovingCompany.DataModel;
 using TruckMovingCompany.Models;
 using TruckMovingCompany.ViewModels;
 using System.Data.Entity;
+using TruckMovingCompany.Repository;
+
 namespace TruckMovingCompany.Controllers
 {
 
@@ -12,99 +14,60 @@ namespace TruckMovingCompany.Controllers
     {
 
         private TruckCompanyContext db;
-
+        private readonly MoverRepository _moverRepository;
         public HomeController()
         {
             // Worry about Dependency Injection and repository pattern later
             db = new TruckCompanyContext();
+            _moverRepository = new MoverRepository(db);
         }
 
         public ActionResult Index()
         {
-            // Get all movers to display to client
+
             IList<MoverViewModel> movers = new List<MoverViewModel>();
 
-            var AllMovers = db.Movers.Include(x => x.Crews).OrderBy(x => x.LastName).ToList();
+            var AllMovers = _moverRepository.GetAllMovers(); 
+
+            HomeViewModel vm = new HomeViewModel(db.Crews.Select(x => x.CrewName).Distinct().ToList<string>());
 
             foreach (var mover in AllMovers)
-            {
-                movers.Add(
-                    new MoverViewModel
-                    {
-                        FirstName = mover.FirstName,
-                        LastName = mover.LastName,
-                        Crews = mover.Crews
-                    }
-                );
-            }
+                vm.AddMoverViewModel(new MoverViewModel(mover));
 
-            HomeViewModel vm = new HomeViewModel {
-                CrewNames = db.Crews.Select(x => x.CrewName).Distinct().ToList<string>(),
-                Movers = movers
-            };
-
-
-           
 
             return View(vm);
         }
 
 
-        // Controller to render last three trucks that went out and Crew Members who went alond with trucks
+
+        // Controller to render last three trucks that went out and Crew Members who went along with trucks
         public ActionResult DisplayLatestInformation()
         {
             var lastThreeTrucks = GetLastThreeTrucks();
             List<TruckDetailsViewModel> lastThreeTrucksViewModels = new List<TruckDetailsViewModel>();
 
             // add found trucks into a presentation model list
-            foreach (var i in lastThreeTrucks)
+            foreach (var truck in lastThreeTrucks)
             {
-                lastThreeTrucksViewModels.Add(new TruckDetailsViewModel
-                {
-                   TruckName = i.TruckName,
-                   LastMoveDateTime = i.LastMoveDateTime
-                });
+                lastThreeTrucksViewModels.Add(
+                        new TruckDetailsViewModel
+                        {
+                           TruckName = truck.TruckName,
+                           LastMoveDateTime = truck.LastMoveDateTime
+                        }
+                );
             }
 
-            // View Model that contains a list of the trucks and members will be passed to the view
+            // View Model that contains a list of the last three trucks that went out and Movers who were part of the crew.
             LatestViewModel vm = new LatestViewModel
             {
                 LastThreeTrucks = lastThreeTrucksViewModels,
                 Movers = GetMovers(lastThreeTrucks)
             };
+
             return View(vm);
         }
 
-        // AJAX POST
-        [HttpPost]
-        public ActionResult PostMover(AddMoverViewModel mover)
-        {
-            var _domainCrew = (from x in db.Crews
-                               where x.CrewName == mover.CrewName
-                               select x).ToList().Take(1);
-            Crew domaincrew = _domainCrew.First();
-            if (Request.IsAjaxRequest())
-            {
-                Movers domainMover = new Movers
-                {
-                    FirstName = mover.FirstName,
-                    LastName = mover.LastName,
-                    Crews = new List<Crew>()
-                };
-
-                domainMover.Crews.Add(domaincrew);
-
-                db.Movers.Add(domainMover);
-
-                db.SaveChanges();
-
-                return Json(new AddMoverViewModel { FirstName = domainMover.FirstName, LastName = domainMover.LastName, CrewName = domaincrew.CrewName });
-            }
-            else
-            {
-                return RedirectToAction("Index");
-            }
-        }
 
 
         //-- Helper Methods ----------------------------------------------------------------------------------------////////

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-
+using TruckMovingCompany.DataModel;
+using System.Linq;
 namespace TruckMovingCompany.Models
 {
     public class Movers
@@ -10,16 +11,51 @@ namespace TruckMovingCompany.Models
         public int MoversId { get; set; }
 
         [Required]
-        [MinLength(2, ErrorMessage = "The {0] must be minumin {2} characters long.")]
-        [MaxLength(20, ErrorMessage = "The {0} must be maximum {2} characters long.")]
         public string FirstName { get; set; }
 
         [Required]
-        [MinLength(2, ErrorMessage = "The {0] must be minumin {2} characters long.")]
-        [MaxLength(20, ErrorMessage = "The {0} must be maximum {2} characters long.")]
         public string LastName { get; set; }
 
         public IList<Crew> Crews { get; set; }
+
+        public Movers()
+        {
+            Crews = new List<Crew>();
+        }
+
+        public Movers(string firstName , string lastName , Crew crew)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Crews = new List<Crew>{ crew };
+        }
+
+        
+
+        public ResultEnum.Result AddToCrew(Crew Crew)
+        {
+            if(!Crews.Any(c => c == Crew))
+            {
+                Crews.Add(Crew);
+                return ResultEnum.Result.Success;
+            }
+
+            return ResultEnum.Result.Failed;
+
+        }
+
+        public ResultEnum.Result RemoveFromCrew(Crew Crew)
+        {
+            if (Crews.Any(c => c == Crew))
+            {
+                Crews.Remove(Crew);
+                return ResultEnum.Result.Success;
+            }
+
+            return ResultEnum.Result.Failed;
+
+        }
+
     }
 
 

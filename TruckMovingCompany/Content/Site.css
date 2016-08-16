@@ -21,6 +21,8 @@ input,
 select,
 textarea {
     max-width: 280px;
+    height: 33px;
+    padding-left: 8p
 }
 
 
@@ -89,10 +91,6 @@ textarea {
     color: rgba(0, 191, 50, 1);
 }
 
-.table thead{ /* .table-header-td */
-    font-size: 1.25em;
-}
-
 .form-label-text{
     color: white;
     font-size: 17px;
@@ -110,6 +108,21 @@ footer{
     font-weight: 700;
     font-family: Poiret One,"Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
+.lbl-danger {
+    color: #d2322d;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 14.45px;
+    position:  center;
+    margin-top: 15px;
+    display: none;
+   
+}
+
+.mover-form-control{
+    margin: 0 auto;
+}
+
 
 /* Bootstrap overrides */
 .navbar-inverse {

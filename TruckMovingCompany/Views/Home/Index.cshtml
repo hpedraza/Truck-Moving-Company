@@ -1,12 +1,11 @@
 ﻿@model TruckMovingCompany.ViewModels.HomeViewModel
 
 @{
-        ViewBag.Title = "Home Page";
+        ViewBag.Title = "Add a Mover";
 }
 
 @* Styling for this page is in Site.CSS *@
 
-@* Background layer *@
 
     <div class="row">
         <div id="header" class="col-md-8">
@@ -14,7 +13,7 @@
 
             <div id="headerView" style="padding-top: 15px;">
                 @if (Model.Movers.Count() == 0)
-            {
+                {
                     <div>
                         <p>There are no movers in the database</p>
                     </div>
@@ -23,6 +22,7 @@
                 else
                 {
                     <div class="panel-group">
+
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <p class="headers">Listed are all Movers in the Company</p>
@@ -37,35 +37,35 @@
                                             <td class="table-header-td">Crews</td>
                                         </tr>
                                     </thead>
+
                                     <tbody id="tableBody">
-                                        @foreach (var i in Model.Movers)
+                                        @foreach (var mover in Model.Movers)
                                         {
                                             <tr>
-                                                <td>@i.FirstName</td>
-                                                <td>@i.LastName</td>
+                                                <td>@mover.FirstName</td>
+                                                <td>@mover.LastName</td>
                                                 <td>
                                                     <select class="form-control">
-                                                        @foreach (var j in i.Crews)
+                                                        @foreach (var crew in mover.Crews)
                                                         {
                                                             <option>
-                                                                @j.CrewName
+                                                                @crew
                                                             </option>
                                                         }
                                                     </select>
                                                 </td>
                                                 <td>
-                                                    @using (Html.BeginForm("EditMover", "Home"))
+                                                    @using (Html.BeginForm("Index", "Mover", "Post"))
                                                     {
-                                                        @Html.Hidden(i.FirstName)
-                                                        @Html.Hidden(i.LastName)
-
-                                                        <button class="btn btn-xs btn-info" type="submit" style="width: 70px;">Edit</button>
+                                                        @Html.Hidden("id" , mover.id.ToString());
+                                                        <button data-mover-id="@mover.id" class="btn btn-xs btn-info js-edit-mover" type="submit" style="width: 70px;">Edit</button>
                                                         <button class="btn btn-xs btn-danger deleteMover" type="button">Delete</button>
                                                     }
                                                 </td>
                                             </tr>
                                         }
                                     </tbody>
+
                                 </table>
                             </div>
                         </div>
@@ -79,36 +79,44 @@
 
         @* Form to create a Mover *@
         <div id="formLayer" class="col-md-4">
+
             <div class="container " id="form-container">
                 <div id="add-a-mover-container">
                     <p class="headers" id="add-a-mover">Add a Mover</p>
                 </div>
+
                 <form role="form" id="moverForm" action="PostMover">
+                    <label id="already-exists-name-validation" class="lbl-danger"></label>
                     <div class="form-group">
                         <label class="form-label-text">First Name </label>
-                        <input type="text" id="firstName" name="firstName" class="form-control" required />
+                        <input type="text" id="firstName" name="firstName" class="form-control mover-form-control" />
+                        <label id ="first-name-validation" class="lbl-danger">* Please insert a first name with more than two characters.</label>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label-text">Last Name </label>
-                        <input type="text" id="lastName" name="lastName" class="form-control" required />
+                        <input type="text" id="lastName" name="lastName" class="form-control mover-form-control"  />
+                        <label id="last-name-validation" class="lbl-danger">* Please insert a first name with more than two characters.</label>
                     </div>
 
 
                     <div class="form-group">
-                        <label class="form-label-text">Add to Crew </label>
-                        <select id="crewName" class="form-control">
-                            @foreach (string CrewName in Model.CrewNames)
+                        <label class="form-label-text">Add to Crew</label>
+                        <select id="crewName" class="form-control mover-form-control">
+                            @foreach (var CrewName in Model.CrewNames)
                             {
                                 <option>
                                     @CrewName
                                 </option>
                             }
                         </select>
+                        <label id="crew-name-validation" class="lbl-danger">* Please insert a crew name.</label>
                     </div>
 
                     <button type="button"  value="Save" class="btn btn-primary js-add-mover">Save</button>
+
                 </form>
+
             </div>
         </div>
     </div>
@@ -116,57 +124,14 @@
 @section scripts{
     <script>
         $(document).ready(function () {
-            $(".js-add-mover").click(function () {
+            AddMoverController.init();
 
-                var moverArray = [$("#firstName").val(),
-                                  $("#lastName").val(),
-                                  $("#crewName").val()];
-                var length = moverArray.length;
-                var error = false;
-                var ArrayIndex = [];
-                for (var i = 0; i < length; i++) {
-                    if (moverArray[i] == "") {
-                        error = true;
-                        ArrayIndex.push(i);
-                    }
-                }
-
-                if(error){
-                    // Do Validation
-                }else{
-                    $.post("/api/AddAMover", {
-                        FirstName: moverArray[0],
-                        LastName: moverArray[1],
-                        CrewName: moverArray[2]
-                    })
-                    .done(function () {
-                        $("#firstName").val('');
-                        $("#lastName").val('');
-
-                        var row = '<tr>';
-                        for (var i = 0; i < moverArray.length; i++) {
-                            if (i < moverArray.length - 1) {
-                                row = row.concat('<td>', moverArray[i], '</td>');
-                            }
-                            else {
-                                row = row.concat('<td><select class = "form-control"><option>', moverArray[i], '</option></select></td>');
-                                row = row.concat('<td>', '<form>', '<input type="hidden" name="firstName" value="', moverArray[0], '"/><input type="hidden" name="lastName" value="', moverArray[1], '"/><button class="btn btn-xs btn-info" type="submit" style="width: 70px;">Edit</button>  <button class="btn btn-xs btn-danger deleteMover" type="button">Delete</button></td></tr></form>');
-                            }
-                        }
-                        var table = $("#tableBody");
-                        table.append(row);
-
-                    })
-                    .fail(function () {
-
-                        alert("Something failed.");
-                    });
-                }
-            });
+          //  $(".js-edit-mover").on("click", function (e) {
+               // var id = $(e.target).attr("data-mover-id");
+               // $.post("/Mover/Index", {id})
+              // .done(alert("done"))
+           // });
         });
-
-
-
     </script>
     
     }

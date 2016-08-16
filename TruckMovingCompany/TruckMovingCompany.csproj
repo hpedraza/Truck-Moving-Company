@@ -178,10 +178,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\AddAMoverController.cs" />
+    <Compile Include="Controllers\Api\AddAMoverController.cs" />
+    <Compile Include="Controllers\Api\EditMoverApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MoverController.cs" />
     <Compile Include="DbContext\context.cs" />
+    <Compile Include="DTO\CrewNameDTO.cs" />
     <Compile Include="DTO\MoverDTO.cs" />
+    <Compile Include="DTO\MoverIdDTO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -201,11 +205,15 @@
     <Compile Include="Models\Crews.cs" />
     <Compile Include="Models\Move.cs" />
     <Compile Include="Models\Movers.cs" />
+    <Compile Include="Models\ResultEnum.cs" />
     <Compile Include="Models\Trucks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\CrewRepository.cs" />
+    <Compile Include="Repository\MoverRepository.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\AddMoverViewModel.cs" />
     <Compile Include="ViewModels\DateTimeVerify.cs" />
+    <Compile Include="ViewModels\EditMoverViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\LatestViewModel.cs" />
     <Compile Include="ViewModels\MoversNameViewModel.cs" />
@@ -223,6 +231,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Controllers\AddMoverController.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -234,6 +243,8 @@
     <Content Include="Scripts\PostMover.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\Services\AddMoverService.js" />
+    <Content Include="Scripts\underscore.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -247,6 +258,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\DisplayLatestInformation.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Mover\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
