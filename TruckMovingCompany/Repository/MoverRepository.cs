@@ -1,9 +1,11 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+
 using TruckMovingCompany.Models;
 using TruckMovingCompany.DataModel;
+using System.Data.Entity;
+using TruckMovingCompany.ViewModels;
 using System.Data.Entity;
 
 namespace TruckMovingCompany.Repository
@@ -27,6 +29,25 @@ namespace TruckMovingCompany.Repository
         public Movers GetMover(int id)
         {
             return _context.Movers.Where(m => m.MoversId == id).Include(m => m.Crews).First();
+        }
+
+        public ResultEnum.Result UpdateMoversName(EditMoverViewModel vm)
+        {
+            try
+            {
+                var mover = GetMover(vm.MoverId);
+                mover.FirstName = vm.FirstName;
+                mover.LastName = vm.LastName;
+
+                return ResultEnum.Result.Success;
+            }
+            catch
+            {
+                return ResultEnum.Result.Failed;
+            }
+
+
+            
         }
 
     }

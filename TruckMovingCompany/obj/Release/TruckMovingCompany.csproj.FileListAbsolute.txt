@@ -70,7 +70,6 @@ C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\T
 C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\obj\Release\TruckMovingCompany.csprojResolveAssemblyReference.cache
 C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\obj\Release\TruckMovingCompany.Migrations.Init.resources
 C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\obj\Release\TruckMovingCompany.Migrations.UpdatedCrewModelRemovedTruckId.resources
 C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\obj\Release\TruckMovingCompany.Migrations.AddedServerSideValidationToModelsAndMadeViewModelCalledDateTimeVerify.resources

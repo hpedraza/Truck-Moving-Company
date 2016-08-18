@@ -7,6 +7,7 @@
 
 @using (Html.BeginForm("EditMover", "Mover", "Post"))
 {
+    @Html.HiddenFor(m => m.MoverId)
     <div class="form-group">
         @Html.LabelFor(m => m.FirstName)
         @Html.TextBoxFor(m => m.FirstName)
@@ -39,29 +40,44 @@
         </select>
         <input type="button" class="btn btn-success js-add-mover-to-crew" value="Add to Crew"/>
     </div>
-
+    <input type="submit" class="btn btn-primary" />
 
 }
 
 @section scripts {
     <script>
         $(document).ready(function () {
+            //-- NOTE: -------------------------------------------------------------------------------- //
+            // Need to add loading icon (for good UX)to pause controls while js adds/removes options
+            //      from lists.
+            //-------------------------
+
+            // add to crew
             $(".js-add-mover-to-crew").on("click", function () {
                 var CrewName = $("#add-crew option:selected").text();
-                alert(CrewName);
+
                 $.post("api/EditMoverApi/AddMoverToCrew", {CrewName:CrewName,MoverId:@Model.MoverId})
                 .done(function(){
-                    alert("success");
+                    var currentCrewList = $("#remove-from-crew");
+                    var addCrewList = document.getElementById("add-crew");
+                    var option = document.createElement("OPTION");
+
+                    option.text =  $("option:selected" , addCrewList).text();
+
+                    $("option:selected" , addCrewList).remove();
+                    if(addCrewList.length === 1){
+                        addCrewList.selectedIndex = 0;
+                    }
+                    currentCrewList.append(option);
                 })
                 .fail(function(){
                     alert("something failed");
                 });
             });
 
-            // remove/delete
+            // remove/delete from
             $(".js-remove-mover-from-crew").on("click", function () {
                 var CrewName = $("#remove-from-crew option:selected").text();
-                alert(CrewName);
 
                 $.ajax({
                     url: "api/EditMoverApi/RemoveMoverFromCrew",
@@ -69,7 +85,19 @@
                     type: "DELETE"
                 })
                 .done(function(){
-                    alert('success');
+                    var currentCrewList = document.getElementById("remove-from-crew");
+                    var addCrewList = $("#add-crew");
+                    var option = document.createElement("OPTION");
+
+                    option.text =  $("option:selected" , currentCrewList).text();
+
+
+                    $("option:selected" , currentCrewList).remove();
+                    if(currentCrewList.length === 1){
+                        currentCrewList.selectedIndex = 0;
+                    }
+                    addCrewList.append(option);
+
                 })
                 .fail(function(){
                     alert('failed');

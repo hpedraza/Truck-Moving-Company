@@ -11,6 +11,10 @@ namespace TruckMovingCompany.ViewModels
   
     public class EditMoverViewModel
     {
+        public EditMoverViewModel()
+        {
+
+        }
         public EditMoverViewModel(Movers mover , TruckCompanyContext db)
         {
             MoversCrews = new List<string>();

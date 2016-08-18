@@ -36,12 +36,21 @@ namespace TruckMovingCompany.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.SaveChanges();
-                return View("Home" , "Index");
+                if(_moverRepository.UpdateMoversName(moverViewModel) == ResultEnum.Result.Success)
+                {
+                    _context.SaveChanges();
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    return View("Index", moverViewModel);
+                }
+
             }
+
             else
             {
-                return View("Index" , moverViewModel);
+                return View("Index" , new EditMoverViewModel(_moverRepository.GetMover(moverViewModel.MoverId) , _context));
             }
 
         }

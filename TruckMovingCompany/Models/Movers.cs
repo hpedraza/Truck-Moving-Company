@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using TruckMovingCompany.DataModel;
 using System.Linq;
+using TruckMovingCompany.ViewModels;
 namespace TruckMovingCompany.Models
 {
     public class Movers
@@ -30,7 +31,11 @@ namespace TruckMovingCompany.Models
             Crews = new List<Crew>{ crew };
         }
 
-        
+        public void UpdateName(EditMoverViewModel vm)
+        {
+            FirstName = vm.FirstName;
+            LastName = vm.LastName;
+        }
 
         public ResultEnum.Result AddToCrew(Crew Crew)
         {
