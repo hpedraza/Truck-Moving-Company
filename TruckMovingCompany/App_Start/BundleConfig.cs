@@ -33,7 +33,8 @@ namespace TruckMovingCompany
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
-                      "~/Content/lastThreeTrucks.css"));
+                      "~/Content/lastThreeTrucks.css",
+                      "~/Content/EditMoverInformationCss.css"));
         }
     }
 }

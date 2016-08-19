@@ -141,7 +141,7 @@ footer{
     font-weight: 700;
 }
 .navbar-brand{
-    font-family: Lobster, "Helvetica Neue", Helvetica, Arial, sans-serif;
+   font-family: Lobster, "Helvetica Neue", Helvetica, Arial, sans-serif;
    font-size: 26px;
 }
 .panel-primary > .panel-heading {
@@ -197,7 +197,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-    font-family: Arvo, "Helvetica Neue", Helvetica, Arial, sans-serif;;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 /* Media Queries */

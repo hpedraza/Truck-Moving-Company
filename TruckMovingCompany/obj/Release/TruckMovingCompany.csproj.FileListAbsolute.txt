@@ -76,3 +76,4 @@ C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\T
 C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\obj\Release\TruckMovingCompany.csproj.GenerateResource.Cache
 C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\obj\Release\TruckMovingCompany.dll
 C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\obj\Release\TruckMovingCompany.pdb
+C:\Users\Pedraza_Gang\Documents\Visual Studio 2015\Projects\TruckMovingCompany\TruckMovingCompany\obj\Release\TruckMovingCompany.csprojResolveAssemblyReference.cache

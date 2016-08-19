@@ -5,6 +5,7 @@ using System.Web;
 using TruckMovingCompany.Models;
 using System.Collections;
 using TruckMovingCompany.DataModel;
+using System.ComponentModel;
 
 namespace TruckMovingCompany.ViewModels
 {
@@ -32,10 +33,17 @@ namespace TruckMovingCompany.ViewModels
 
             CrewListToAdd = CrewNameList;
         }
+
+        [DisplayName("First Name")]
         public string FirstName { get; set; }
+
+        [DisplayName("Last Name")]
         public string LastName { get; set; }
+
         public int MoverId { get; set; }
+
         public IList<string> MoversCrews { get; set; }
+
         public IList<string> CrewListToAdd { get; set; }       
     }
 }
