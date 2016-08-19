@@ -42,6 +42,7 @@
     };
 
     var done = function (moverId) {
+        console.log(moverId.toString());
         /*-- Need to look into Backbone.js and underscore.js --*/
         if (moverId === -1) {
             $("#already-exists-name-validation").text("Name already exists in database.");
@@ -65,8 +66,8 @@
                 row = row.concat('<td>', mover.FirstName, '</td>');
                 row = row.concat('<td>', mover.LastName, '</td>');
                 row = row.concat('<td><select class = "form-control"><option>', mover.CrewName, '</option></select></td>');
-                row = row.concat('<td>', '<form>', '<input type="hidden"  value="', moverId.toString(), '"/><button class="btn btn-xs btn-info" type="submit" style="width: 70px;">Edit</button>  <button class="btn btn-xs btn-danger deleteMover" type="button">Delete</button></td></tr></form>');
-
+                row = row.concat('<td>', '<form action="/Mover/Index" method="POST">', '<input name="id" type="hidden"  value="', moverId.toString(), '"/><button data-mover-id="',moverId,'" class="btn btn-xs btn-info js-edit-mover" type="submit" style="width: 70px;">Edit</button>  <button class="btn btn-xs btn-danger js-edit-mover" type="button">Delete</button></td></tr></form>');
+                                                                  
                 var table = $("#tableBody");
                 table.append(row);
             }
